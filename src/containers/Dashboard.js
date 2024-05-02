@@ -72,9 +72,18 @@ export default class {
     this.document = document
     this.onNavigate = onNavigate
     this.store = store
-    $('#arrow-icon1').click((e) => this.handleShowTickets(e, bills, 1))
-    $('#arrow-icon2').click((e) => this.handleShowTickets(e, bills, 2))
-    $('#arrow-icon3').click((e) => this.handleShowTickets(e, bills, 3))
+    $('#arrow-icon1').on('click', function(e) {
+      this.handleShowTickets(e, bills, 1);
+      this.attachListeners(bills);
+    }.bind(this));
+    $('#arrow-icon2').on('click', function(e) {
+      this.handleShowTickets(e, bills, 2);
+      this.attachListeners(bills);
+    }.bind(this));
+    $('#arrow-icon3').on('click', function(e) {
+      this.handleShowTickets(e, bills, 3);
+      this.attachListeners(bills);
+    }.bind(this));
     new Logout({ localStorage, onNavigate })
   }
 
@@ -151,6 +160,16 @@ export default class {
 
     return bills
 
+  }
+
+  attachListeners = async (bills) => {
+
+    bills.forEach(bill => {
+      $(`#open-bill${bill.id}`).off("click")
+    })
+    bills.forEach(bill => {
+      $(`#open-bill${bill.id}`).click((e) => this.handleEditTicket(e, bill, bills))
+    })
   }
 
   getBillsAllUsers = () => {
