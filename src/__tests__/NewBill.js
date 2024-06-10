@@ -6,19 +6,8 @@ import { ROUTES_PATH, ROUTES } from "../constants/routes.js"
 import { localStorageMock } from "../__mocks__/localStorage.js"
 import { toBeInTheDocument } from "@testing-library/jest-dom/matchers.js"
 import userEvent from "@testing-library/user-event"
-import mockStore from "../__mocks__/store"
-import { createBrowserHistory, createHashHistory, createMemoryHistory } from "history"
-import Login, { PREVIOUS_LOCATION } from "../containers/Login.js"
 
 import router from "../app/Router"
-
-async function checkRequiredFormFileds(dateField, amountField, VATInput) {
-  if (dateField.value && amountField.value && VATInput.value) {
-    return true
-  } else {
-    return false
-  }
-}
 
 describe("Given I am connected as an employee", () => {
   expect.extend({toBeInTheDocument})
@@ -114,9 +103,9 @@ describe("Given I am connected as an employee", () => {
         const VATInput = screen.getByTestId("pct")
         const fileInput = screen.getByTestId("file")
         const file = new File(['text'], 'billFileMock.png', { type: 'image/png' })
-        // Clear all form fileds
-          userEvent.clear(nameField, dateField, amountField, VATInput, fileInput)
-        //
+        
+        userEvent.clear(nameField, dateField, amountField, VATInput, fileInput)
+        
         userEvent.type(
           nameField,
           "Jest test field"
@@ -165,9 +154,9 @@ describe("Given I am connected as an employee", () => {
         const VATInput = screen.getByTestId("pct")
         const fileInput = screen.getByTestId("file")
         const file = new File(['img'], 'billFileMock.png', { type: 'image/png' })
-        // Clear all form fileds
-          userEvent.clear(nameField, dateField, amountField, VATInput, fileInput)
-        //
+        
+        userEvent.clear(nameField, dateField, amountField, VATInput, fileInput)
+        
         userEvent.type(
           nameField,
           "Jest test field"
@@ -236,9 +225,9 @@ describe("Given I am connected as an employee", () => {
         const amountField = screen.getByTestId("amount")
         const VATInput = screen.getByTestId("pct")
         const fileInput = screen.getByTestId("file")
-        // Clear all form fileds
-          userEvent.clear(nameField, dateField, amountField, VATInput, fileInput)
-        //
+        
+        userEvent.clear(nameField, dateField, amountField, VATInput, fileInput)
+        
         userEvent.type(
           nameField,
           "Jest test field"
@@ -288,9 +277,9 @@ describe("Given I am connected as an employee", () => {
         const fileInput = screen.getByTestId("file")
         const file = new File(['text'], 'billFileMock.txt', { type: 'document/txt' })
 
-        // Clear all form fileds
-          userEvent.clear(nameField, dateField, amountField, VATInput, fileInput)
-        //
+        
+        userEvent.clear(nameField, dateField, amountField, VATInput, fileInput)
+        
         userEvent.type(
           nameField,
           "Jest test field"
@@ -339,9 +328,9 @@ describe("Given I am connected as an employee", () => {
         const fileInput = screen.getByTestId("file")
         const file = new File(['text'], 'billFileMock.png', { type: 'image/png' })
 
-        // Clear all form fileds
-          userEvent.clear(nameField, dateField, amountField, VATInput, fileInput)
-        //
+       
+        userEvent.clear(nameField, dateField, amountField, VATInput, fileInput)
+        
         userEvent.type(
           nameField,
           "Jest test field"
@@ -388,9 +377,9 @@ describe("Given I am connected as an employee", () => {
         const fileInput = screen.getByTestId("file")
         const file = new File(['text'], 'billFileMock.png', { type: 'image/png' })
 
-        // Clear all form fileds
-          userEvent.clear(nameField, dateField, amountField, VATInput, fileInput)
-        //
+        
+        userEvent.clear(nameField, dateField, amountField, VATInput, fileInput)
+        
         userEvent.type(
           nameField,
           "Jest test field"
@@ -434,9 +423,9 @@ describe("Given I am connected as an employee", () => {
         const fileInput = screen.getByTestId("file")
         const file = new File(['text'], 'billFileMock.png', { type: 'image/png' })
 
-        // Clear all form fileds
-          userEvent.clear(nameField, dateField, amountField, VATInput, fileInput)
-        //
+        
+        userEvent.clear(nameField, dateField, amountField, VATInput, fileInput)
+        
         userEvent.type(
           nameField,
           "Jest test field"
