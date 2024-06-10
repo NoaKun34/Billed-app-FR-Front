@@ -4,6 +4,7 @@
   },
   "jest": {
     "verbose": false,
+    "testEnvironment": "jsdom",
     "setupFiles": [
       "./setup-jest.js"
     ],
@@ -18,8 +19,10 @@
   },
   "type": "module",
   "dependencies": {
+    "@testing-library/react": "^15.0.7",
     "express": "^4.17.1",
     "global": "^4.4.0",
+    "history": "^5.3.0",
     "jquery": "^3.5.1",
     "path": "^0.12.7"
   },
