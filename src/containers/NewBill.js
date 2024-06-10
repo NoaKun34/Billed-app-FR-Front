@@ -96,7 +96,6 @@ export default class NewBill {
         this.fileUrl = filePath
       }).catch(error => console.error(error))
   }
-  // not need to cover this function by tests
   updateBill = (bill) => {
     if (this.store) {
       this.store
