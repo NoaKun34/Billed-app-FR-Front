@@ -155,6 +155,52 @@ describe("Given I am connected as an employee", () => {
         expect(billsTableRows).toBeTruthy();
         expect(within(billsTableRows).getAllByRole("row")).toHaveLength(4);
       });
+      test("Then fetches fails with 404 message error from mock API GET", async () => {
+        localStorage.setItem(
+          "user",
+          JSON.stringify({ type: "Employee", email: "a@a" })
+        );
+  
+        const onNavigate = (pathname) => {
+          document.body.innerHTML = ROUTES({ pathname });
+        };
+  
+        const test = new Bills({
+          document,
+          onNavigate,
+          store: store,
+          localStorageMock: window.localStorage,
+        });
+  
+        try {
+          await test.getBills(404);
+        } catch (e) {
+          expect(e.message).toBe("Erreur 404");
+        }
+      });
+      test("Then fetches fails with 500 message error from mock API GET", async () => {
+        localStorage.setItem(
+          "user",
+          JSON.stringify({ type: "Employee", email: "a@a" })
+        );
+  
+        const onNavigate = (pathname) => {
+          document.body.innerHTML = ROUTES({ pathname });
+        };
+  
+        const test = new Bills({
+          document,
+          onNavigate,
+          store: store,
+          localStorageMock: window.localStorage,
+        });
+  
+        try {
+          await test.getBills(500);
+        } catch (e) {
+          expect(e.message).toBe("Erreur 500");
+        }
+      });
     });
   });
 });
